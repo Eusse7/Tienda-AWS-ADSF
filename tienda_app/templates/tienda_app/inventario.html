@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventario</title>
+</head>
+<body>
+    <h1>Inventario de Libros</h1>
+    <ul>
+        {% for libro in libros %}
+            <li>{{ libro.titulo }} - Stock: {{ libro.stock_actual }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
