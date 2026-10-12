@@ -1,9 +1,20 @@
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import OrdenInputSerializer
+from tienda_app.models import Libro
+from .serializers import OrdenInputSerializer, LibroSerializer
 from tienda_app.services import CompraService
 from tienda_app.infra.factories import PaymentFactory
+
+class ProductoListView(ListAPIView):
+    """
+    Endpoint para consultar productos disponibles desde el monolito Django (v1).
+    GET /api/v1/productos/
+    """
+    queryset = Libro.objects.all()
+    serializer_class = LibroSerializer
+
 
 class CompraAPIView(APIView):
     """
